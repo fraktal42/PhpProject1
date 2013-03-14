@@ -1,0 +1,153 @@
+<!--
+Unsauber wie sau, aber JQuery muss andauernd erneut eingebunden werden
+Imports werden nicht beim Aufruf einer Unterseite komplett neu geladen, wie es sein sollte
+-->
+<script type='text/javascript' src='../js/jquery-1.9.1.min.js'></script>
+<script type='text/javascript'>
+
+    $(document).ready(function() {
+
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            editable: true,
+            timeFormat: 'H:mm{ - H:mm}',
+            monthNames: [
+                'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli',
+                'August', 'September', 'Oktober', 'November', 'Dezember'
+            ],
+            monthNamesShort: [
+                'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul',
+                'Aug', 'Sep', 'Okt', 'Nov', 'Dez'
+            ],
+            dayNames: [
+                'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'
+            ],
+            dayNamesShort: [
+                'So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'
+            ],
+            defaultEventMinutes: 60,
+            slotMinutes: 15,
+            firstHour: 9,
+            titleFormat: {
+                month: 'MMMM yyyy',
+                week: ' MMMM yyyy',
+                day: 'dd.MM.yyyy'
+            },
+            buttonText: {
+                today: 'Heute',
+                month: 'Monat',
+                week: 'Woche',
+                day: 'Tag'
+            },
+            allDayText: 'Ganztägig',
+            axisFormat: "H:mm 'Uhr'",
+            firstDay: 1,
+            selectable: true,
+            selectHelper: true,
+            select: function(startDate, endDate, allDay, jsEvent, view)
+            {
+                //alert("Einen neuen Termin erstellen? Vom: "+startDate+" bis: "+endDate);
+            },
+            droppable: true, // this allows things to be dropped onto the calendar !!!
+            dayClick: function(date, allDay, jsEvent, view) {
+                /*if (allDay) {
+                 alert('Auf den Tag: ' + date + " geklickt!");
+                 } else {
+                 alert('Auf den Zeitpunkt: ' + date + " geklickt!");
+                 }*/
+            },
+            eventClick: function(event, jsEvent, view) {
+                alert(event.title + " : " + event.start + " " + event.end + " allday? " + event.allDay);
+            },
+            events: [
+                {
+                    title: 'All Day Event',
+                    start: new Date(y, m, 1)
+                },
+                {
+                    title: 'Long Event',
+                    start: new Date(y, m, d - 5),
+                    end: new Date(y, m, d - 2)
+                },
+                {
+                    id: 999,
+                    title: 'Repeating Event',
+                    start: new Date(y, m, d - 3, 16, 0),
+                    allDay: false
+                },
+                {
+                    id: 999,
+                    title: 'Repeating Event',
+                    start: new Date(y, m, d + 4, 16, 0),
+                    allDay: false
+                },
+                {
+                    title: 'Meeting',
+                    start: new Date(y, m, d, 10, 30),
+                    allDay: false
+                },
+                {
+                    title: 'Lunch',
+                    start: new Date(y, m, d, 12, 0),
+                    end: new Date(y, m, d, 14, 0),
+                    allDay: false
+                },
+                {
+                    title: 'Birthday Party',
+                    start: new Date(y, m, d + 1, 19, 0),
+                    end: new Date(y, m, d + 1, 22, 30),
+                    allDay: false
+                },
+                {
+                    title: 'Click for Google',
+                    start: new Date(y, m, 28),
+                    end: new Date(y, m, 29),
+                    url: 'http://google.com/'
+                }
+            ]
+        });
+
+    });
+    
+    // Change the frequency for displaying time slots, in minutes.
+    $('#slot60').click(slotChange(60));
+    $('#slot30').click(slotChange(30));
+    $('#slot15').click(slotChange(15));
+    
+    function slotChange(slotValue)
+    {
+        $('#calendar').fullCalendar({
+            slotMinutes: slotValue
+        });
+    }
+
+</script>
+<style type='text/css'>
+
+    body {
+        margin-top: 40px;
+        text-align: center;
+        font-size: 14px;
+        font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+    }
+
+    #calendar {
+        width: 900px;
+        margin: 0 auto;
+    }
+
+</style>
+<div id='calendar'></div>
+<input type="button" id="slot60" value="60 Minuten" />
+<input type="button" id="slot30" value="30 Minuten" />
+<input type="button" id="slot15" value="15 Minuten" />
+

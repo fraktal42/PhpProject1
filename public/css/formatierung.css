@@ -1,0 +1,20 @@
+#format_right
+{
+ text-align:right!important;
+}
+
+.btn-group[data-switch="true"] .btn.active 
+{
+ font-weight: bolder;
+}
+
+.checkboxBox
+{
+	margin-left: 15px;
+}
+
+.allStat
+{
+	margin-left: 10px;
+	margin-top: 20px;
+}

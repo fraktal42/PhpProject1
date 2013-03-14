@@ -1,0 +1,12 @@
+/* 
+    Document   : MenuColor
+    Created on : 28.02.2013, 09:58:00
+    Author     : Prakt
+    Description:
+        Purpose of the stylesheet follows.
+*/
+a.inactive
+{
+	background-color: rgb(42, 42, 42)!important;
+	color: rgb(119, 119, 119)!important;
+}

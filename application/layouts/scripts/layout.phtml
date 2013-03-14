@@ -1,0 +1,111 @@
+<?php
+//Unsauber, sollte in Controller geschenen -> keine Ahnung wie/Übergabe????
+
+$baseURL = Zend_Controller_Front::getInstance()->getBaseUrl();
+?>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<title>Kalender</title>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="<?php echo $baseURL?>/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="<?php echo $baseURL?>/css/bootstrap-responsive.min.css" />
+        <link rel="stylesheet" href="<?php echo $baseURL?>/css/colorpicker.css" />
+        <link rel="stylesheet" href="<?php echo $baseURL?>/css/datepicker.css" />
+		<link rel="stylesheet" href="<?php echo $baseURL?>/css/uniform.css" />
+		<link rel="stylesheet" href="<?php echo $baseURL?>/css/select2.css" />		
+		<link rel="stylesheet" href="<?php echo $baseURL?>/css/unicorn.main.css" />
+		<link rel="stylesheet" href="<?php echo $baseURL?>/css/bootstrap-timepicker.css" />
+		<link rel='stylesheet' type='text/css' href='<?php echo $baseURL?>/css/fullcalendar.css' />
+		<link rel='stylesheet' type='text/css' href='<?php echo $baseURL?>/css/fullcalendar.print.css' media='print' />
+		<link rel="stylesheet" href="<?php echo $baseURL?>/css/unicorn.grey.css" class="skin-color" />	
+
+
+	</head>
+	<body>
+
+		
+		<div id="header">
+			<h1><a href="./dashboard.html">This is! DMG</a></h1>	
+		</div>
+
+		<!--<div id="search">
+			<input type="text" placeholder="Search here..."/><button type="submit" class="tip-right" title="Search"><i class="icon-search icon-white"></i></button>
+		</div>-->
+		<div id="user-nav" class="navbar navbar-inverse">
+            <ul class="nav btn-group">
+                <!--<li class="btn btn-inverse" ><a title="" href="#"><i class="icon icon-user"></i> <span class="text">Profile</span></a></li>
+                <li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">Messages</span> <span class="label label-important">5</span> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a class="sAdd" title="" href="#">new message</a></li>
+                        <li><a class="sInbox" title="" href="#">inbox</a></li>
+                        <li><a class="sOutbox" title="" href="#">outbox</a></li>
+                        <li><a class="sTrash" title="" href="#">trash</a></li>
+                    </ul>
+                </li>
+                <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Settings</span></a></li>-->
+                <li class="btn btn-inverse"><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+            </ul>
+        </div>
+
+		<div id="sidebar">
+			<a href="#" class="visible-phone"><i class="icon icon-home"></i>&Uuml;berblick</a>
+			<ul>
+				<li class="active"><a href="kalender/"><i class="icon icon-home"></i> <span>&Uuml;berblick</span></a></li>
+				<li class="submenu">
+					<a href="#"><i class="icon icon-envelope"></i> <span>Nachrichten</span> <span class="label"><i class="icon icon-chevron-down"></i></span></a>
+					<ul>
+						<li><a href="ueberblick.html">&Uuml;berblick</a></li>
+						<li><a href="dmg_sendmessage.html">Test Nachrichten</a></li>
+					</ul>
+				</li>
+				<li><a href="zielgruppe.html"><i class="icon icon-user"></i> <span>Zielgruppe</span></a></li>
+				<li class="submenu">
+					<a href="#"><i class="icon icon-tasks"></i> <span>Reports</span> <span class="label"><i class="icon icon-chevron-down"></i></span></a>
+					<ul>
+						<li><a href="reports_gesendet.html">Pushs gesendet</a></li>
+						<li><a href="reports_registriert.html">Pushs registriert</a></li>
+					</ul>
+				</li>
+				<li class="submenu">
+					<a href="#"><i class="icon icon-wrench"></i> <span>Einstellungen</span> <span class="label"><i class="icon icon-chevron-down"></i></span></a>
+					<ul>
+						<li><a href="apps.html">Apps</a></li>
+						<li><a href="team.html">Team</a></li>
+					</ul>
+				</li>
+				<li class="submenu"><a href="#"><i class="icon icon-cog"></i><span> Services </span><span class="label"><i class="icon icon-chevron-down"></i></span></a>
+					<ul>	
+						<!--Submenu-->
+						<li><a href="apn.html">Apple Push Notification</a></li>
+						<li><a href="gcm.html">Google Cloud Messaging</a></li>
+						<li class="inactive"><a style="color:rgb(119, 119, 119); background-color: rgb(42, 42, 42);" href="#">Helium</a></li>
+						<li class="inactive"><a style="color:rgb(119, 119, 119); background-color: rgb(42, 42, 42);" href="#">Microsoft</a></li>
+					</ul>
+				</li>
+			</ul>
+
+		</div>
+
+		<div id="content">
+			<?php echo $this->layout()->content; ?>
+		</div>
+
+		<script type='text/javascript' src='<?php echo $baseURL?>/js/jquery-1.9.1.min.js'></script>
+		<script type='text/javascript' src='<?php echo $baseURL?>/js/jquery-migrate-1.1.1.js'></script>
+		<script type='text/javascript' src='<?php echo $baseURL?>/js/jquery-ui-1.10.1.custom.min.js'></script>
+		<script type='text/javascript' src='<?php echo $baseURL?>/js/fullcalendar.min.js'></script>
+		<script src="<?php echo $baseURL?>/js/bootstrap.js"></script>
+		<script src="<?php echo $baseURL?>/js/bootstrap-colorpicker.js"></script>
+		<script src="<?php echo $baseURL?>/js/bootstrap-datepicker.js"></script>
+		<script src="<?php echo $baseURL?>/js/jquery.uniform.js"></script>
+		<script src="<?php echo $baseURL?>/js/select2.js"></script>
+		<script src="<?php echo $baseURL?>/js/jquery.dataTables.min.js"></script>
+		<script src="<?php echo $baseURL?>/js/unicorn.js"></script>
+		<script src="<?php echo $baseURL?>/js/unicorn.tables.js"></script>
+		<script src="<?php echo $baseURL?>/js/unicorn.form_common.js"></script>
+		<script src="<?php echo $baseURL?>/js/excanvas.min.js"></script>
+	</body>
+</html>
